@@ -1,0 +1,15 @@
+<body>{{> loginButtons }}{{> userList }}{{> map }}</body>
+<template name="map">
+  <div class="map-container">
+    {{#unless geolocationError}}
+      {{> googleMap name="map" options=exampleMapOptions}}        
+    {{else}}
+      Geolocation failed: {{geolocationError}}
+    {{/unless}}
+  </div>
+</template>
+<template name="userList">
+  {{#each user in usersOnline}}
+    {{user.emails.[0].address}}
+  {{/each}}
+</template>
